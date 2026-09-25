@@ -1,0 +1,4 @@
+.login-shell{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#eef5ff,#f8fafc)}
+.login-card{width:min(420px,100%);background:#fff;border:1px solid #e6e9ed;border-radius:16px;padding:32px;box-shadow:0 18px 50px #1f4f8a14}
+.login-card h1{font-size:26px;margin:36px 0 8px}.login-card p{color:#687481;line-height:1.5;margin:0 0 24px}.login-button{width:100%;margin-top:18px}.login-button:disabled{opacity:.6;cursor:wait}.login-message{margin-top:16px;padding:12px;border-radius:9px;background:#f2f6fb;color:#4f647c;font-size:14px}
+.text-button,.link-button{border:0;background:none;color:#246bce;font-weight:700;padding:8px 0;display:block;margin:4px auto;cursor:pointer}.login-divider{display:flex;align-items:center;gap:10px;color:#9aa2aa;font-size:13px;margin:12px 0}.login-divider::before,.login-divider::after{content:"";height:1px;background:#e6e9ed;flex:1}
