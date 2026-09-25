@@ -27,7 +27,7 @@ export async function GET(request: Request) {
   }
   const pagesResult = await pagesResponse.json();
   if (!pagesResponse.ok) return NextResponse.json({ error: "อ่านรายการเพจจาก Meta ไม่สำเร็จ", detail: pagesResult.error?.message }, { status: 400 });
-  const response = NextResponse.json({ connected: true, pages: (pagesResult.data || []).map((page: { id: string; name: string; tasks?: string[] }) => ({ id: page.id, name: page.name, tasks: page.tasks || [] })) });
+  const response = NextResponse.redirect(new URL("/settings/facebook?connected=1", requestUrl));
   response.cookies.set("lampam_meta_oauth_state", "", { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 0, path: "/" });
   return response;
 }
