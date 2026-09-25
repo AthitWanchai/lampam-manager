@@ -29,6 +29,8 @@ export async function GET(request: Request) {
   if (!pagesResponse.ok) return NextResponse.json({ error: "อ่านรายการเพจจาก Meta ไม่สำเร็จ", detail: pagesResult.error?.message }, { status: 400 });
   const response = NextResponse.redirect(new URL("/settings/facebook?connected=1", requestUrl));
   response.cookies.set("lampam_meta_connected", "1", { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 60 * 60 * 24 * 30, path: "/" });
+  const firstPage = (pagesResult.data || [])[0];
+  if (firstPage?.id && firstPage?.access_token) response.cookies.set("lampam_meta_page", JSON.stringify({ id: firstPage.id, token: firstPage.access_token, name: firstPage.name }), { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 60 * 60 * 24 * 30, path: "/" });
   response.cookies.set("lampam_meta_oauth_state", "", { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 0, path: "/" });
   return response;
 }
