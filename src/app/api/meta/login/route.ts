@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     redirect_uri: redirectUri,
     response_type: "code",
     state,
-    scope: "public_profile,pages_show_list,pages_read_engagement,pages_manage_posts",
+    scope: "public_profile,pages_show_list",
   });
   const response = NextResponse.redirect(`https://www.facebook.com/v24.0/dialog/oauth?${params.toString()}`);
   response.cookies.set("lampam_meta_oauth_state", state, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 600, path: "/" });
